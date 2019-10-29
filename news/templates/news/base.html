@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>News Aggregator</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,700" rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link href="{% static 'news/css/plugin-frameworks/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'news/css/plugin-frameworks/swiper.css' %}" rel="stylesheet">
+    <link href="{% static 'news/css/fonts/ionicons.css' %}" rel="stylesheet">
+    <link href="{% static 'news/css/common/styles.css' %}" rel="stylesheet">
+</head>
+
+<body>
+<!-- Navbar -->
+<header>
+    <a class="logo" href="#"><img src="images/news_logo.png" alt="Logo"></a>
+
+    <div class="right-area">
+        <form class="src-form">
+            <button type="submit"><i class="ion-search text-warning"></i></a></button>
+            <input type="text" placeholder="Search here">
+        </form><!-- src-form -->
+    </div><!-- right-area -->
+
+    <a class="menu-nav-icon" data-menu="#main-menu" href="#"><i class="ion-navicon"></i></a>
+
+    <ul class="main-menu text-dark" id="main-menu">
+        <li><a href="index.html">Home</a></li>
+
+        <li><a href="#">Business</a></li>
+        <li><a href="#">Science and Technology</a></li>
+        <li class="drop-down"><a href="#!">Sport<i class="ion-arrow-down-b"></i></a>
+            <ul class="drop-down-menu drop-down-inner">
+                <li><a href="#">PAGE 1</a></li>
+                <li><a href="#">PAGE 2</a></li>
+            </ul>
+        </li>
+        <li><a href="#">Entertainment</a></li>
+        <li><a href="#">Health</a></li>
+        <li><a href="#">Login</a></li>
+    </ul>
+
+    <div class="clearfix"></div>
+</header>
+
+{% block content %}
+{% endblock %}
+
+
+<!-- JS -->
+<script src="{% static 'news/css/plugin-frameworks/jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'news/css/plugin-frameworks/bootstrap.min.js' %}"></script>
+<script src="{% static 'news/css/plugin-frameworks/swiper.js'%}"></script>
+<script src="{% static 'news/css/common/scripts.js' %}"></script>
+
+</body>
+
+</html>
