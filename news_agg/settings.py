@@ -124,3 +124,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, "news/static/")
+
+# Login Redirect
+
+LOGIN_REDIRECT_URL = 'news-home'
