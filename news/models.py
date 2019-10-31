@@ -16,6 +16,7 @@ class Article(models.Model):
     image_url = models.URLField(max_length=200)
     content = models.CharField(max_length=1000)
     article_topic = models.ForeignKey(Topic, on_delete=models.CASCADE)
+    keywords = models.CharField(max_length=255)
 
 
 class Comment(models.Model):
