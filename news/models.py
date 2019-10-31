@@ -30,3 +30,11 @@ class Tag(models.Model):
     article_id = models.ForeignKey(Article, on_delete=models.CASCADE)
     name = models.CharField(max_length=255)
 
+
+class View(models.Model):
+    article_id = models.ForeignKey(Article, on_delete=models.CASCADE)
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+
+
+class Article_URL(models.Model):
+    url = models.URLField(max_length=250)
