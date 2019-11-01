@@ -135,6 +135,7 @@
         <h1>News Home</h1>
         {% for article in articles %}
             <h2>{{ article.headline }}</h2>
+            <img class="col-6 mx-auto" src="{{ article.image_url }}">
             <p>{{ article.content }}</p>
         {% endfor %}
     </div>
