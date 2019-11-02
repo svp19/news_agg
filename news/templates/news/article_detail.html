@@ -1,0 +1,142 @@
+{% extends 'news/base.html' %}
+{% block content %}
+    <section class="bg-white ptb-0">
+        <div class="container-fluid">
+            <div class="row bg-1">
+                <div class="col-lg-1"></div>
+                <div class="col-md-12 col-lg-8 ptb-50 pr-30 pr-md-15 mt-100">
+                    <h1><strong>{{ article.article_topic }}</strong></h1>
+                    <div class="row mt-25">
+                        <h2>{{ article.headline }}</h2>
+                        <div class="col-sm-12 col-md-6">
+
+                            <div class="sided-70x">
+                                <div class="s-left">
+                                    <img style="max-height:500px" src="images/profile.jpg" alt="">
+                                </div><!-- s-left-->
+
+                                <div class="s-right">
+                                    <p class="ptb-20 color-ash"><b>{{ article.author }} on {{ article.publish_date }}</b></p>
+                                </div>
+                            </div><!-- sided-80x-->
+                        </div><!-- col-md-6-->
+
+                        <div class="col-sm-12 col-md-6">
+                            <ul class="color-ash lh-70 text-right text-sm-left list-a-plr-10 font-13">
+                                <li><b>SHARE</b></li>
+                                <li><a href="#"><i class="color-facebook ion-social-facebook"></i></a></li>
+                                <li><a href="#"><i class="color-twitter ion-social-twitter"></i></a></li>
+                                <li><a href="#"><i class="color-google ion-social-google"></i></a></li>
+                            </ul>
+                        </div><!-- col-md-6-->
+                    </div><!-- row-->
+
+
+                    <img src="{{ article.image_url }}" alt="">
+
+                    <p class="mt-40 mt-sm-10">
+                        {{ article.content }}
+                    </p>
+
+                    <ul class="tag mtb-50">
+                    {% for tag in tags %}
+                            <li><a href="#"><b>{{ tag }}</b></a></li>
+                    {% endfor %}
+                    </ul>
+
+
+
+                    <div class="row">
+                        <div class="col-sm-12 col-md-6">
+
+                            <div class="sided-70x">
+                                <div class="s-left">
+                                    <img src="images/profile.jpg" alt="">
+                                </div><!-- s-left-->
+
+                                <div class="s-right">
+                                    <p class="ptb-20 color-ash"><b>Katy Liu on Sep 29, 2017 at 9:48 am</b></p>
+                                </div>
+                            </div><!-- sided-80x-->
+                        </div><!-- col-md-6-->
+
+                        <div class="col-sm-12 col-md-6">
+                            <ul class="color-ash lh-70 text-right text-sm-left list-a-plr-10 font-13">
+                                <li><b>SHARE</b></li>
+                                <li><a href="#"><i class="color-facebook ion-social-facebook"></i></a></li>
+                                <li><a href="#"><i class="color-twitter ion-social-twitter"></i></a></li>
+                                <li><a href="#"><i class="color-google ion-social-google"></i></a></li>
+                            </ul>
+                        </div><!-- col-md-6-->
+                    </div><!-- row-->
+
+                    <!-- Comments -->
+                    <h4 class="mb-30 mt-20 clearfix"><b>Post Comment</b></h4>
+
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-8">
+                            <form class="form-block form-h-55 form-plr-20 form-bg-white">
+                                <div class="row">
+                                    <div class="col-sm-6 mb-30">
+                                        <input type="text" placeholder="Name">
+                                    </div><!-- col-sm-6-->
+
+                                    <div class="col-sm-6 mb-30">
+                                        <input type="text" placeholder="Email">
+                                    </div><!-- col-sm-6-->
+
+                                    <div class="col-sm-12 mb-30">
+                                        <textarea class="ptb-20 min-h-200x" placeholder="Comment"></textarea>
+                                    </div><!-- col-sm-12-->
+
+                                </div><!-- row-->
+                                <button class="btn-b-lg btn-brdr-grey plr-25 color-ash" type="submit"><b>Post
+                                    Comment</b></button>
+
+                            </form>
+                        </div><!-- col-sm-6-->
+                    </div><!-- row-->
+
+                    <h4 class="mb-30 mt-50 clearfix"><b>Comments(12)</b></h4>
+
+
+                    <div class="row">
+                        <div class="colsm-12 col-md-12 col-lg-12 col-xl-8">
+                            <div class="p-30 bg-white">
+                                <div class="row">
+                                    <div class="col-9 col-lg-9 col-xl-6">
+
+                                        <div class="sided-70x">
+                                            <div class="s-left">
+                                                <img src="images/profile.jpg" alt="">
+                                            </div><!-- s-left-->
+
+                                            <div class="s-right">
+                                                <p class="ptb-5 color-ash"><b>Katy Liu on Sep 29, 2017 at 9:48 am</b>
+                                                </p>
+                                            </div>
+                                        </div><!-- sided-80x-->
+                                    </div><!-- col-md-6-->
+
+                                    <div class="col-3 col-lg-3 col-xl-6 text-right">
+                                        <a class="color-ash" href="#"><b>REPLY</b></a>
+                                    </div><!-- col-md-6-->
+                                </div><!-- row-->
+
+                                <p class="mt-30">At that event and the ones that followed, plenty of senior
+                                    citizens — among them librarians, property developers</p>
+                            </div><!-- p-30-->
+                        </div><!-- col-sm-6-->
+                    </div><!-- row-->
+
+                    <a class="mt-30 mb-50 mb-sm-20 btn-b-lg btn-brdr-grey plr-25 color-ash" href="#"><b>Load
+                        More</b></a>
+
+                </div><!-- col-sm-9 -->
+            </div><!-- row -->
+        </div><!-- container -->
+    </section>
+
+{% endblock %}
+
+
