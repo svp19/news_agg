@@ -4,21 +4,17 @@ from django.shortcuts import render, redirect
 from django.views.generic.detail import DetailView
 from django.http import HttpResponse
 from .models import Article, View, Comment, Topic
-from .query import *
+import news.query as q
 
 
 @login_required
 def home(request):
-    articles = Article.objects.raw(q_all)
-    recent = Article.objects.raw(q_recent)
+    articles = Article.objects.raw(q.q_all_articles)
+    recent = Article.objects.raw(q.q_recent)
 
     # Fetch Recommended articles by topic
     topics = Topic.objects.all()
-    topic_article_dict = {}
-    for topic in topics:
-        topic_article_dict[topic.name] = Article.objects.filter(article_topic=topic)
-
-    print('Special Query')
+    topic_article_dict = q.get_recommended_by_topic(topics)
 
     return render(request, 'news/home.html',
                   {'articles': articles, 'recent': recent, 'topic_article_dict': topic_article_dict})
