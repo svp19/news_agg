@@ -1,6 +1,5 @@
 from django import forms
 from django.forms import ModelForm
-
 from news.models import Article
 
 
@@ -17,4 +16,3 @@ class ArticleForm(ModelForm):
                             'type': 'date',
                         })
         }
-

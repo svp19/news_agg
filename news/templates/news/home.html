@@ -111,12 +111,13 @@
     </section>
 
     <!-- Recommended for topic -->
+    {% for topic, topic_articles in topic_article_dict.items %}
     <section class="bg-1-white ptb-0">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-1"></div>
                 <div class="col-md-12 col-lg-8 ptb-50 pr-30 pr-md-15">
-                    <h4 class="mb-30 mt-20 clearfix"><b>Recommended in Entertainment</b></h4>
+                    <h4 class="mb-30 mt-20 clearfix"><b>Recommended in {{ topic }}</b></h4>
 
                     <div class="row">
 
@@ -127,8 +128,8 @@
 
                                     <!-- SETTING IMAGE WITH bg-2 -->
                                     <div class="s-left w-50 w-xs-100 h-100 h-xs-50 pos-relative">
-                                        <div class="bg-3 abs-tblr" style="background: url({{ article.image_url }})!important"></div>
-                                        <img src="{{ article.image_url }}">
+                                        <div class="bg-3 abs-tblr" style="background: url({{ topic_articles.0.image_url }}) no-repeat center; background-size: cover;"></div>
+{#                                        <img src="{{ topic_articles.0.image_url }}">#}
                                     </div>
 
                                     <div class="s-right w-50 w-xs-100 h-xs-50">
@@ -137,8 +138,10 @@
                                                 <div class="dplay-tbl-cell">
 
                                                     <h5 class="color-ash"><b>ART</b></h5>
-                                                    <h2 class="mtb-10"><a href="#">
-                                                        <b>As an Alchoholic, Your Company "Parks" are Killing me</b></a>
+                                                    <h2 class="mtb-10"><a href="{% url 'article-detail' topic_articles.0.id %}">
+                                                        <b>
+                                                            {{ topic_articles.0.headline }}
+                                                        </b></a>
                                                     </h2>
                                                     <ul class="list-li-mr-10 color-lt-black">
                                                         <li><i class="mr-5 font-12 ion-android-favorite-outline"></i>15
@@ -156,7 +159,7 @@
                         </div><!-- col-lg-8 col-md-12 -->
 
                         <!-- Repeating Card -->
-                        {% for article in articles %}
+                        {% for article in topic_articles %}
                         <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 mb-30">
                             <div class="card h-100 h-xs-350x">
                                 <div class="bg-white h-100">
@@ -193,4 +196,6 @@
             </div>
         </div>
     </section>
+    {% endfor %}
+
 {% endblock %}
