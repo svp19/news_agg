@@ -58,27 +58,6 @@ class ArticleDetailView(DetailView):
         return context
 
 
-# def create_comment_view(request):
-#     print("Enter COMMENT VIEW")
-#     if request.method == "POST":
-#         form = CommentForm(request.POST)
-#         print("POST")
-#         # if form.is_valid():
-#         # print("DATA", comment)
-#         # article_pk = request.POST.get('article_pk')
-#         # comment.comment_by = request.user
-#         # comment.article = Article.objects.filter(pk=article_pk)
-#         # comment.date_posted = timezone.now()
-#         # print("COMMENT!!!:", comment.content)
-#         # comment.save()
-#         return render(request, 'news_admin/tag_form.html', {'form': form})
-#
-#     else:
-#         form = CommentForm()
-#         print("NOT POST")
-#     return render(request, 'news_admin/tag_form.html', {'form': form})
-
-
 def create_comment_view(request):
     if request.method == "POST":
         article = Article.objects.filter(id=request.POST.get('article_id'))
