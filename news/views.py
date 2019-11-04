@@ -13,7 +13,7 @@ def home(request):
     recent = Article.objects.raw(q.q_recent)
 
     # Fetch Recommended articles by topic
-    topics = Topic.objects.all()
+    topics = q.get_topics_by_preference(request.user)
     topic_article_dict = q.get_recommended_by_topic(topics)
 
     return render(request, 'news/home.html',
