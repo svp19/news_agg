@@ -71,3 +71,14 @@ def create_comment_view(request):
         )
         return redirect('article-detail', pk=article[0].id)
     return redirect('news-home')
+
+
+def list_by_topic(request, pk=1):
+    topic = Topic.objects.filter(id=pk)
+    articles = Article.objects.filter(article_topic__in=topic).order_by('-publish_date')
+    return render(request, 'news/list_article_by_topic.html', {'articles': articles, 'topic': topic[0].name})
+
+
+def list_topics(request):
+    topics = Topic.objects.all().order_by('name')
+    return render(request, 'news/list_topics.html', {'topics': topics})

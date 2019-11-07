@@ -1,0 +1,43 @@
+{% extends 'news/base.html' %}
+{% block content %}
+
+    <section class="bg-1-white ptb-0">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-1"></div>
+                <div class="col-md-12 col-lg-8 ptb-50 pr-30 pr-md-15">
+                    <h4 class="mb-30 mt-50 clearfix"><b>Latest in {{ topic }}</b></h4>
+
+                    <div class="row">
+
+                        <!-- Repeating Card -->
+                        {% for topic in topics %}
+                            <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 mb-30">
+                                <div class="card h-100 h-xs-350x">
+                                    <div class="bg-white h-100">
+
+                                        <a href="{% url 'list-by-topic' topic.id %}">
+                                            <div class="plr-25 ptb-15 h-50">
+                                                <div class="dplay-tbl">
+                                                    <div class="dplay-tbl-cell">
+
+                                                        <h4><b>{{ topic.name }}</b></h4>
+
+
+                                                    </div><!-- dplay-tbl-cell -->
+                                                </div><!-- dplay-tbl -->
+                                            </div><!-- plr-25 ptb-15 -->
+                                        </a>
+                                    </div><!-- hot-news -->
+                                </div><!-- card -->
+                            </div><!-- col-lg-4 col-md-6 -->
+                        {% endfor %}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+{% endblock %}
