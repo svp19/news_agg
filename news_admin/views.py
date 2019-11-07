@@ -1,6 +1,7 @@
 from django.shortcuts import render, HttpResponse, redirect
 from django.views.generic import CreateView
 from news.models import Topic, Tag
+from users.models import Author
 from .forms import ArticleUrlForm, ArticleForm
 
 from newspaper import Article as SmartArticle
@@ -74,7 +75,7 @@ def article_from_url(request):
 
         if form.is_valid():
             form = form.save(commit=False)
-            form.author = request.user
+            form.author = Author.objects.filter(user=request.user)[0]
             form.save()
             return redirect('news-home')
         
