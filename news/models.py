@@ -3,6 +3,8 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 import datetime
 
+from users.models import Author
+
 
 class Topic(models.Model):
     name = models.CharField(max_length=100, unique=True)
@@ -19,7 +21,7 @@ class Article(models.Model):
     location = models.CharField(max_length=255, blank=True, null=True)
     publish_date = models.DateField(default=datetime.date.today)
     byline = models.CharField(max_length=150, blank=True)
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    author = models.ForeignKey(Author, on_delete=models.CASCADE)
     image_url = models.URLField(max_length=200)
     content = models.TextField(max_length=3000)
     article_topic = models.ForeignKey(Topic, on_delete=models.CASCADE)

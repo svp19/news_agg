@@ -7,8 +7,10 @@ from .models import Article, View, Comment, Topic
 import news.query as q
 
 
-@login_required
 def home(request):
+    if not request.user.is_authenticated:
+        return redirect('login')
+
     articles = Article.objects.raw(q.q_all_articles)
     recent = Article.objects.raw(q.q_recent)
 
