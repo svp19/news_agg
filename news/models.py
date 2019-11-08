@@ -17,13 +17,13 @@ class Topic(models.Model):
 
 
 class Article(models.Model):
-    headline = models.CharField(max_length=100)
+    headline = models.CharField(max_length=200)
     location = models.CharField(max_length=255, blank=True, null=True)
     publish_date = models.DateField(default=datetime.date.today)
     byline = models.CharField(max_length=150, blank=True)
     author = models.ForeignKey(Author, on_delete=models.CASCADE)
     image_url = models.URLField(max_length=200)
-    content = models.TextField(max_length=3000)
+    content = models.TextField(max_length=5000)
     article_topic = models.ForeignKey(Topic, on_delete=models.CASCADE)
     keywords = models.CharField(max_length=255)
 
