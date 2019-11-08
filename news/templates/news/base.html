@@ -15,27 +15,28 @@
     <link href="{% static 'news/css/plugin-frameworks/swiper.css' %}" rel="stylesheet">
     <link href="{% static 'news/css/fonts/ionicons.css' %}" rel="stylesheet">
     <link href="{% static 'news/css/common/styles.css' %}" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 
 <body>
 <!-- Navbar -->
 <header>
-    <a class="logo" href="#"><img
+    <a class="logo" href="{% url 'news-home' %}"><img
             src="https://res.cloudinary.com/svp19/image/upload/v1572602692/newsaggregator/news_logo_tcedcq.png"
             alt="Logo"></a>
     {% if user.is_authenticated %}
-    <div class="right-area">
-        <form class="src-form">
-            <button type="submit"><i class="ion-search text-warning"></i></a></button>
-            <input type="text" placeholder="Search here">
-        </form><!-- src-form -->
-    </div><!-- right-area -->
+        <div class="right-area">
+            <a href="{% url 'news-search' %}">
+                <form class="src-form">
+                    <button type="submit"><i class="ion-search text-warning"></i></button>
+                    <input type="text" placeholder="Search here" disabled>
+                </form><!-- src-form -->
+            </a>
+        </div><!-- right-area -->
     {% endif %}
     <a class="menu-nav-icon" data-menu="#main-menu" href="{% url 'news-home' %}"><i class="ion-navicon"></i></a>
 
     <ul class="main-menu text-dark" id="main-menu">
-
-
 
 
         {% if user.is_staff %}
@@ -52,13 +53,13 @@
         {% if user.is_authenticated %}
             <li><a href="{% url 'news-home' %}">Home</a></li>
             <li><a href="{% url 'list-topics' %}">Explore</a>
-{#                <ul class="drop-down-menu drop-down-inner">#}
-{#                    <li><a href="#">Business</a></li>#}
-{#                    <li><a href="#">Science and Technology</a></li>#}
-{#                    <li><a href="#">Entertainment</a></li>#}
-{#                    <li><a href="#">Health</a></li>#}
-{#                    <li><a href="#">More . . .</a></li>#}
-{#                </ul>#}
+                {#                <ul class="drop-down-menu drop-down-inner">#}
+                {#                    <li><a href="#">Business</a></li>#}
+                {#                    <li><a href="#">Science and Technology</a></li>#}
+                {#                    <li><a href="#">Entertainment</a></li>#}
+                {#                    <li><a href="#">Health</a></li>#}
+                {#                    <li><a href="#">More . . .</a></li>#}
+                {#                </ul>#}
             </li>
             <li class="drop-down"><a href="#!">Account<i class="ion-arrow-down-b"></i></a>
                 <ul class="drop-down-menu drop-down-inner">

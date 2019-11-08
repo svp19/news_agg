@@ -1,0 +1,82 @@
+{% extends 'news/base.html' %}
+{% block content %}
+
+    <div class="row mb-5">
+        <div class="col-lg-8 mx-auto">
+            <h5 class="font-weight-light mb-4 font-italic text-white">Custom rounded search bars with input group</h5>
+            <div class="bg-white p-5 mt-100 rounded-pill">
+
+                <!-- Custom rounded search bars with input group -->
+                <form>
+                    <div class="input-group mb-4 border rounded-pill p-1" style="border-radius: 50px;">
+                        <div class="input-group-prepend border-0">
+                            <button id="button-addon4" type="button" class="btn btn-link text-info"><i
+                                    class="fa fa-search"></i></button>
+                        </div>
+                        <input name="query" type="search" placeholder="Search by headlines, authors, keywords..."
+                               aria-describedby="button-addon4" class="form-control bg-none border-0">
+                    </div>
+                </form>
+                <!-- End -->
+                {% if query != '' %}
+                    {% if num_results != 0 %}
+                        <h1>Search results for {{ query }}</h1>
+                    {% else %}
+                        <h1>No Search Results Found!</h1>
+                    {% endif %}
+                    {% for article in articles %}
+
+                        <section class="bg-white ptb-0">
+                            <div class="container-fluid">
+                                <div class="row ">
+                                    <div class="col-12 ptb-50">
+
+                                        <div class="row">
+
+                                            <!-- Featured Card in Topic -->
+                                            <div class="col-12 mb-30">
+                                                <div class="card h-100 h-xs-500x">
+                                                    <div class="sided-half sided-xs-half h-100 bg-white">
+
+                                                        <!-- SETTING IMAGE WITH bg-2 -->
+                                                        <div class="col-6 s-left w-50 w-xs-100 h-100 h-xs-50 pos-relative">
+                                                            <div class="bg-3 abs-tblr"
+                                                                 style="background: url({{ article.image_url }}) no-repeat center; background-size: cover;"></div>
+                                                        </div>
+
+                                                        <div class="s-right w-50 w-xs-100 h-xs-50">
+                                                            <div class="plr-25 ptb-25 h-100">
+                                                                <div class="dplay-tbl">
+                                                                    <div class="dplay-tbl-cell">
+
+                                                                        <h5 class="color-ash"><b>ART</b></h5>
+                                                                        <h2 class="mtb-10"><a
+                                                                                href="{% url 'article-detail' article.id %}">
+                                                                            <b>
+                                                                                {{ article.headline }}
+                                                                            </b></a>
+                                                                        </h2>
+                                                                        <p>
+                                                                            <strong>Keyword: </strong>{{ article.keywords }}
+                                                                        </p>
+                                                                    </div><!-- dplay-tbl-cell -->
+                                                                </div><!-- dplay-tbl -->
+                                                            </div><!-- plr-25 ptb-25 -->
+                                                        </div><!-- s-right -->
+                                                    </div><!-- sided-half -->
+                                                </div><!-- card -->
+                                            </div><!-- col-lg-8 col-md-12 -->
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
