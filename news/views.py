@@ -13,13 +13,19 @@ def home(request):
 
     articles = Article.objects.raw(q.q_all_articles)
     recent = Article.objects.raw(q.q_recent)
-
+    trending = Article.objects.raw(q.q_trending_articles)
+    num_comments = list()
+    for article in recent:
+        comments = Comment.objects.filter(article_id=article)
+        num_comments.append(len(comments))
+    recent = zip(recent, num_comments)
+    # print(num_comments)
     # Fetch Recommended articles by topic
     topics = q.get_topics_by_preference(request.user)
     topic_article_dict = q.get_recommended_by_topic(topics)
 
     return render(request, 'news/home.html',
-                  {'articles': articles, 'recent': recent, 'topic_article_dict': topic_article_dict})
+                  {'articles': articles, 'recent': recent, 'topic_article_dict': topic_article_dict, 'trending': trending})
 
 
 @login_required

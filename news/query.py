@@ -14,14 +14,20 @@ q_topic_views = 'select t.name as topic_id, count(a.id) as num ' \
                 'join news_topic as t on a.article_topic_id = t.id ' \
                 'where v.user_id_id = %s ' \
                 'group by t.name ' \
-                'order by count(a.id) desc'
+                'order by count(a.id) desc;'
 
 q_article_views = 'select a.id as article_id, t.name as topic_id, count(a.id) as num ' \
-                'from news_article as a ' \
-                'join news_view as v on a.id = v.article_id_id ' \
-                'join news_topic as t on a.article_topic_id = t.id ' \
-                'group by a.id, t.name ' \
-                'order by count(a.id) desc'
+                  'from news_article as a ' \
+                  'join news_view as v on a.id = v.article_id_id ' \
+                  'join news_topic as t on a.article_topic_id = t.id ' \
+                  'group by a.id, t.name ' \
+                  'order by count(a.id) desc;'
+
+q_trending_articles = 'select * ' \
+                      'from news_article as a ' \
+                      'group by a.id ' \
+                      'order by count(a.id) ' \
+                      'limit 10;'
 
 
 # Raw Query Functions
