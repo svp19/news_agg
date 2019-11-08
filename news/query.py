@@ -26,7 +26,7 @@ q_article_views = 'select a.id as article_id, t.name as topic_id, count(a.id) as
 q_trending_articles = 'select * ' \
                       'from news_article as a ' \
                       'group by a.id ' \
-                      'order by count(a.id) ' \
+                      'order by count(a.id)/(a.publish_date-"01-01-1980") ' \
                       'limit 10;'
 
 

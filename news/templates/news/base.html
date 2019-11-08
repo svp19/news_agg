@@ -20,7 +20,7 @@
 <body>
 <!-- Navbar -->
 <header>
-    <a class="logo" href="#"><img
+    <a class="logo" href="{% url 'news-home' %}"><img
             src="https://res.cloudinary.com/svp19/image/upload/v1572602692/newsaggregator/news_logo_tcedcq.png"
             alt="Logo"></a>
     {% if user.is_authenticated %}

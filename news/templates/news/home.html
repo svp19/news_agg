@@ -13,9 +13,8 @@
                     <div class="dplay-tbl-cell color-white mtb-30">
                         <div class="mx-w-400x">
                             <h5 class="text-dark"><b>National</b></h5>
-                            <h1 class="mt-20 mb-30 text-dark"><b>Key takeaways from Union Cabinet Decisions on
-                                October 23</b></h1>
-                            <h6><a class="plr-20 btn-brdr-grey color-white text-dark" href="#"><b>Continue
+                            <h1 class="mt-20 mb-30 text-dark"><b>11,000 scientists warn: climate change isn't just about temperature</b></h1>
+                            <h6><a class="plr-20 btn-brdr-grey color-white text-dark" href="{% url 'article-detail' 3 %}"><b>Continue
                                 Reading</b></a></h6>
                         </div><!-- mx-w-200x -->
                     </div><!-- dplay-tbl-cell -->
@@ -90,8 +89,8 @@
                         <div class="card h-100 bg-white">
                             <div class="plr-25 ptb-15">
 
-                                <h5 class="color-ash"><b>{{ article.article_topic.name }}</b></h5>
-                                <h4 class="mtb-10"><a href="#"><b>{{ article.headline }}</b></a></h4>
+                                <h5 class="color-ash" ><b>{{ article.article_topic.name }}</b></h5>
+                                <h4 class="mtb-10"><a href="#"><b><a href="{% url 'article-detail' article.id %}">{{ article.headline }}</b></a></h4>
 
                             </div><!-- hot-news -->
                         </div><!-- card -->
