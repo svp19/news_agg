@@ -38,3 +38,8 @@ The checkout commands sets the working branch to the one you have just created.
         git push origin branch_name
         
 5. Create a pull request on GitHub, and get it merged!
+
+
+## Postgresql Setup
+
+https://medium.com/agatha-codes/painless-postgresql-django-d4f03364989
