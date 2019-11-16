@@ -20,10 +20,12 @@ def home(request):
         comments = Comment.objects.filter(article_id=article)
         num_comments.append(len(comments))
     recent = zip(recent, num_comments)
-    # print(num_comments)
+
     # Fetch Recommended articles by topic
+    topic_article_dict = None
     topics = q.get_topics_by_preference(request.user)
-    topic_article_dict = q.get_recommended_by_topic(topics)
+    if topics:
+        topic_article_dict = q.get_recommended_by_topic(topics)
 
     return render(request, 'news/home.html',
                   {'articles': articles, 'recent': recent, 'topic_article_dict': topic_article_dict,

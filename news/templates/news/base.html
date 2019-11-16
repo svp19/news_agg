@@ -39,16 +39,7 @@
     <ul class="main-menu text-dark" id="main-menu">
 
 
-        {% if user.is_staff %}
-            <li class="drop-down"><a href="#!">Create<i class="ion-arrow-down-b"></i></a>
-                <ul class="drop-down-menu drop-down-inner">
-                    <li><a href="{% url 'create-article-url' %}">Article</a></li>
-                    <li><a href="{% url 'create-author' %}">Author</a></li>
-                    <li><a href="{% url 'create-tag' %}">Tag</a></li>
-                    <li><a href="{% url 'create-topic' %}">Topic</a></li>
-                </ul>
-            </li>
-        {% endif %}
+
 
         {% if user.is_authenticated %}
             <li><a href="{% url 'news-home' %}">Home</a></li>
@@ -70,6 +61,18 @@
         {% else %}
             <li><a href="{% url 'login' %}">Login</a></li>
         {% endif %}
+
+        {% if user.is_staff %}
+            <li class="drop-down"><a href="#!">Create<i class="ion-arrow-down-b"></i></a>
+                <ul class="drop-down-menu drop-down-inner">
+                    <li><a href="{% url 'create-article-url' %}">Article</a></li>
+                    <li><a href="{% url 'create-author' %}">Author</a></li>
+                    <li><a href="{% url 'create-tag' %}">Tag</a></li>
+                    <li><a href="{% url 'create-topic' %}">Topic</a></li>
+                </ul>
+            </li>
+        {% endif %}
+
     </ul>
 
     <div class="clearfix"></div>

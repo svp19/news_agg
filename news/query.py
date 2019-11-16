@@ -23,11 +23,12 @@ q_article_views = 'select a.id as article_id, t.name as topic_id, count(a.id) as
                   'group by a.id, t.name ' \
                   'order by count(a.id) desc;'
 
-q_trending_articles = 'select * ' \
-                      'from news_article as a ' \
-                      'group by a.id ' \
-                      'order by count(a.id)/(a.publish_date-"01-01-1980") ' \
-                      'limit 10;'
+q_trending_articles = "select a.* " \
+                      "from news_article as a " \
+                      "join news_view as v on a.id = v.article_id_id " \
+                      "group by a.id " \
+                      "order by count(a.id) desc limit 6;"
+                      # "order by count(v.article_id_id)/(a.publish_date-'01-01-1980') desc limit 6;"
 
 
 # Raw Query Functions
@@ -51,8 +52,11 @@ def get_recommended_by_topic(topics):
         # Pre-process
         topic_article_id_dict = {k.name: [] for k in topics}
         article_views = result_set
+        print(topics)
         for row in article_views:
-            topic_article_id_dict[row['topic_id']].append(row['article_id'])
+            if row['topic_id'] in topic_article_id_dict:
+                if len(topic_article_id_dict[row['topic_id']]) < 5:
+                    topic_article_id_dict[row['topic_id']].append(row['article_id'])
 
         topic_article_dict = {}
         for key, value in topic_article_id_dict.items():

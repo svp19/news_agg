@@ -147,7 +147,7 @@
                     </div><!-- col-lg-8 col-md-12 -->
 
                     <!-- Repeating Card -->
-                    {% for article in topic_articles %}
+                    {% for article in topic_articles|slice:"1:" %}
                     <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 mb-30">
                         <div class="card h-100 h-xs-350x">
                             <div class="bg-white h-100">
