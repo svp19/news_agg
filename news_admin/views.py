@@ -57,7 +57,7 @@ def article_from_url(request):
     if request.method == 'POST':
         article_url = request.POST.get('article_url', None)
         form = ArticleForm(request.POST.copy())
-
+        print("here")
         # Pre-populate form with content from article url (if exists)
         if article_url is not None:
             filler = SmartArticle(article_url)
@@ -69,18 +69,21 @@ def article_from_url(request):
             form.data['datetime'] = filler.publish_date
             form.data['image_url'] = filler.top_image
             form.data['content'] = filler.text
+            form.data['article_url'] = article_url
             print(str(filler.keywords))
             form.data['keywords'] = str(filler.keywords)
+            print("here2")
+
+            if form.is_valid():
+                form = form.save(commit=False)
+                form.author = Author.objects.filter(user=request.user)[0]
+                form.save()
+                return redirect('news-home')
             return render(request, 'news_admin/topic_form.html', {'form': form})
 
-        if form.is_valid():
-            form = form.save(commit=False)
-            form.author = Author.objects.filter(user=request.user)[0]
-            form.save()
-            return redirect('news-home')
-        
+        # return render(request, 'news_admin/topic_form.html', {'form': form})
+    else:
+        print("Blank Form")
+        form = ArticleForm()
         return render(request, 'news_admin/topic_form.html', {'form': form})
-
-    form = ArticleForm()
-    return render(request, 'news_admin/topic_form.html', {'form': form})
 

@@ -39,6 +39,8 @@
                         {{ article.content|linebreaksbr }}
                     </p>
 
+                    <a href="{{ article.article_url }}"><h3 class="mt-10 text-info">Read Full article here...</h3></a>
+
                     <ul class="tag mtb-50">
                         {% for tag in tags %}
                             <li><a href="#"><b>{{ tag }}</b></a></li>
